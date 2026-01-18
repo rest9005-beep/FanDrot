@@ -3,49 +3,962 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FanDrot | Social Platform</title>
+    <title>FanDrot | Next-Gen Social Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        /* Все CSS стили остаются здесь */
-        /* ... (полный CSS из файла) ... */
+        /* 🌟 EXTREME COSMIC VARIABLES */
+        :root {
+            /* Galactic Colors */
+            --neon-blue: #00f3ff;
+            --neon-purple: #9d00ff;
+            --neon-pink: #ff00ff;
+            --neon-green: #00ff9d;
+            --cyber-yellow: #ffd700;
+            --void-black: #000010;
+            --deep-space: #0a0a1a;
+            --starlight: #e6f7ff;
+            --nebula: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #9d00ff 50%, #ff00ff 75%, #00f3ff 100%);
+            
+            /* Cyber Effects */
+            --glow-blue: 0 0 20px rgba(0, 243, 255, 0.7);
+            --glow-purple: 0 0 20px rgba(157, 0, 255, 0.7);
+            --glow-pink: 0 0 20px rgba(255, 0, 255, 0.7);
+            --glow-green: 0 0 20px rgba(0, 255, 157, 0.7);
+            --cyber-grid: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18h3v18h-3v-18zm14 0h3v18h-3v-18z' fill='%2300f3ff' fill-opacity='0.1'/%3E%3C/svg%3E");
+            
+            /* Cyber Font Sizes */
+            --font-huge: 5rem;
+            --font-large: 3.5rem;
+            --font-medium: 2rem;
+            --font-normal: 1.1rem;
+        }
+
+        /* 🚀 RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--void-black);
+            color: var(--starlight);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(157, 0, 255, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 243, 255, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(255, 0, 255, 0.1) 0%, transparent 30%);
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--cyber-grid);
+            opacity: 0.03;
+            z-index: -1;
+            animation: gridMove 20s linear infinite;
+        }
+
+        /* 🌌 CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 12px;
+            background: var(--deep-space);
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 243, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--nebula);
+            border-radius: 10px;
+            border: 2px solid var(--deep-space);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--neon-blue);
+            box-shadow: var(--glow-blue);
+        }
+
+        /* 🌠 COSMIC BACKGROUND ANIMATIONS */
+        .cosmic-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        .nebula {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.3;
+            animation: nebulaFloat 30s infinite ease-in-out;
+        }
+
+        .nebula-1 {
+            background: var(--neon-purple);
+            top: 10%;
+            left: 10%;
+        }
+
+        .nebula-2 {
+            background: var(--neon-blue);
+            bottom: 20%;
+            right: 15%;
+        }
+
+        .nebula-3 {
+            background: var(--neon-pink);
+            top: 40%;
+            right: 5%;
+        }
+
+        /* ✨ PARTICLE SYSTEM */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: particleFloat linear infinite;
+        }
+
+        /* ⚡ HEADER - CYBERPUNK STYLE */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 16, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1);
+            animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 🔥 LOGO WITH GLITCH EFFECT */
+        .logo {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 28px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--neon-blue);
+            text-shadow: var(--glow-blue);
+            transition: all 0.3s ease;
+        }
+
+        .logo::before {
+            content: 'FanDrot';
+            position: absolute;
+            left: 2px;
+            color: var(--neon-pink);
+            z-index: -1;
+            animation: glitch 3s infinite;
+        }
+
+        .logo::after {
+            content: 'FanDrot';
+            position: absolute;
+            left: -2px;
+            color: var(--neon-green);
+            z-index: -2;
+            animation: glitch 2s infinite reverse;
+        }
+
+        .logo-icon {
+            font-size: 32px;
+            color: var(--neon-blue);
+            animation: pulse 2s infinite;
+        }
+
+        /* 🎮 NAVIGATION - HOVER EFFECTS */
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            position: relative;
+            color: var(--starlight);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(0, 243, 255, 0.05);
+            border: 1px solid transparent;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.2), transparent);
+            transition: 0.6s;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--neon-blue);
+            border-color: var(--neon-blue);
+            box-shadow: var(--glow-blue);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .nav-link.active {
+            background: var(--neon-blue);
+            color: var(--void-black);
+            box-shadow: var(--glow-blue);
+            animation: buttonGlow 2s infinite;
+        }
+
+        .nav-link i {
+            font-size: 18px;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--neon-pink);
+            color: white;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 10px;
+            min-width: 20px;
+            text-align: center;
+            box-shadow: var(--glow-pink);
+            animation: badgePulse 1.5s infinite;
+        }
+
+        /* 🚀 BUTTONS - CYBER STYLE */
+        .btn {
+            position: relative;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--nebula);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .btn:hover::before {
+            opacity: 1;
+        }
+
+        .btn-primary {
+            background: var(--neon-blue);
+            color: var(--void-black);
+            box-shadow: var(--glow-blue);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 243, 255, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--neon-blue);
+            color: var(--neon-blue);
+        }
+
+        .btn-outline:hover {
+            background: var(--neon-blue);
+            color: var(--void-black);
+            transform: translateY(-5px);
+        }
+
+        .btn-cyber {
+            background: transparent;
+            border: 2px solid var(--neon-purple);
+            color: var(--neon-purple);
+            text-shadow: 0 0 10px var(--neon-purple);
+        }
+
+        .btn-cyber:hover {
+            background: var(--neon-purple);
+            color: var(--void-black);
+            box-shadow: var(--glow-purple);
+            animation: cyberFlash 0.3s;
+        }
+
+        /* 🌟 HERO SECTION - EPIC INTRO */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 40px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0, 243, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            color: var(--neon-blue);
+            padding: 15px 30px;
+            border-radius: 50px;
+            margin-bottom: 60px;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-tag i {
+            font-size: 24px;
+            color: var(--neon-blue);
+            animation: spin 10s linear infinite;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: var(--font-huge);
+            font-weight: 900;
+            margin-bottom: 40px;
+            line-height: 1.1;
+            background: var(--nebula);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 20px 40px rgba(0, 243, 255, 0.3);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        .hero-title span {
+            display: block;
+            font-size: calc(var(--font-huge) * 0.7);
+            margin-top: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: var(--font-normal);
+            line-height: 1.8;
+            color: rgba(230, 247, 255, 0.8);
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            background: rgba(0, 0, 16, 0.5);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* 🏆 PROFILE SECTION - ULTIMATE DESIGN */
+        .profile-section {
+            min-height: 100vh;
+            padding: 140px 40px 80px;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: var(--font-large);
+            font-weight: 900;
+            margin-bottom: 60px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title i {
+            color: var(--neon-blue);
+            margin-right: 20px;
+            font-size: 48px;
+            vertical-align: middle;
+        }
+
+        .section-title span {
+            background: var(--nebula);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .profile-header {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            background: rgba(0, 0, 16, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 50px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            box-shadow: 0 30px 60px rgba(0, 243, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--nebula);
+            animation: borderFlow 3s linear infinite;
+        }
+
+        .profile-banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: var(--nebula);
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .profile-info {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .avatar-container {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .avatar-frame {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            padding: 8px;
+            background: var(--nebula);
+            animation: rotate 20s linear infinite;
+            box-shadow: 0 0 50px rgba(0, 243, 255, 0.5);
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--void-black);
+        }
+
+        .avatar-status {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 24px;
+            height: 24px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            border: 3px solid var(--void-black);
+            box-shadow: var(--glow-green);
+            animation: pulse 2s infinite;
+        }
+
+        .profile-details {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: var(--nebula);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .profile-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            background: rgba(157, 0, 255, 0.2);
+            border: 1px solid var(--neon-purple);
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--neon-purple);
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--glow-purple);
+        }
+
+        .profile-badge i {
+            font-size: 20px;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: rgba(0, 243, 255, 0.05);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: var(--neon-blue);
+            box-shadow: var(--glow-blue);
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--neon-blue);
+            margin-bottom: 10px;
+            text-shadow: var(--glow-blue);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: rgba(230, 247, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* 🎯 FORUM SECTION - CYBER CHAT */
+        .forum-section {
+            min-height: 100vh;
+            padding: 140px 40px 80px;
+            position: relative;
+        }
+
+        .forum-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+        }
+
+        .forum-sidebar {
+            background: rgba(0, 0, 16, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            height: fit-content;
+            position: sticky;
+            top: 140px;
+        }
+
+        .forum-chat {
+            background: rgba(0, 0, 16, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            min-height: 600px;
+        }
+
+        .message {
+            background: rgba(0, 243, 255, 0.05);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            animation: slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .message-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .message-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--neon-blue);
+            object-fit: cover;
+        }
+
+        /* 🌈 ANIMATIONS */
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 0 20px 40px rgba(0, 243, 255, 0.3); }
+            to { text-shadow: 0 20px 60px rgba(157, 0, 255, 0.5); }
+        }
+
+        @keyframes buttonGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 243, 255, 0.7); }
+            50% { box-shadow: 0 0 40px rgba(0, 243, 255, 1); }
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes borderFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes nebulaFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -20px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+
+        @keyframes particleFloat {
+            from { transform: translateY(100vh); }
+            to { transform: translateY(-100px); }
+        }
+
+        @keyframes cyberFlash {
+            0% { filter: brightness(1); }
+            50% { filter: brightness(2); }
+            100% { filter: brightness(1); }
+        }
+
+        /* 📱 RESPONSIVE DESIGN */
+        @media (max-width: 1200px) {
+            :root {
+                --font-huge: 4rem;
+                --font-large: 3rem;
+            }
+            
+            .forum-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .forum-sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .profile-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .hero-section {
+                padding: 100px 20px 60px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .profile-header {
+                padding: 30px;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .profile-name {
+                font-size: 2.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 14px 28px;
+                font-size: 14px;
+            }
+        }
+
+        /* 🎭 LOADING ANIMATION */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--void-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 4px solid transparent;
+            border-top: 4px solid var(--neon-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            box-shadow: 0 0 30px var(--neon-blue);
+        }
+
+        /* 💫 PARALLAX EFFECT */
+        .parallax-element {
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="animated-bg">
-        <div class="floating-dots" id="floatingDots"></div>
+    <!-- 🌌 COSMIC BACKGROUND -->
+    <div class="cosmic-background">
+        <div class="stars"></div>
+        <div class="nebula nebula-1"></div>
+        <div class="nebula nebula-2"></div>
+        <div class="nebula nebula-3"></div>
     </div>
 
-    <!-- Header -->
+    <!-- ✨ PARTICLES -->
+    <div class="particles"></div>
+
+    <!-- ⚡ HEADER -->
     <header>
-        <div class="container nav-container">
+        <div class="nav-container">
             <a href="#" class="logo">
                 <i class="fas fa-shield-alt logo-icon"></i>
-                <span class="logo-text">FanDrot</span>
+                FANDROT
             </a>
+            
             <div class="nav-links">
-                <a href="#" class="nav-link active" data-section="home">
+                <a href="#home" class="nav-link active" data-section="home">
                     <i class="fas fa-home"></i> Home
                 </a>
-                <a href="#" class="nav-link" data-section="forum">
+                <a href="#forum" class="nav-link" data-section="forum">
                     <i class="fas fa-comments"></i> Forum
                     <span class="notification-badge">3</span>
                 </a>
-                <a href="#" class="nav-link" data-section="friends">
+                <a href="#friends" class="nav-link" data-section="friends">
                     <i class="fas fa-user-friends"></i> Friends
-                    <span class="notification-badge" id="friendsNotification">0</span>
+                    <span class="notification-badge" id="friendsNotification">5</span>
                 </a>
-                <a href="#" class="nav-link" data-section="profile">
+                <a href="#profile" class="nav-link" data-section="profile">
                     <i class="fas fa-user"></i> Profile
                 </a>
-                <a href="#" class="nav-link" id="adminPanelLink" style="display: none;">
+                <a href="#admin" class="nav-link" id="adminPanelLink" style="display: none;">
                     <i class="fas fa-crown"></i> Admin
                 </a>
             </div>
+            
             <div class="nav-actions">
                 <button class="btn btn-outline btn-small" id="loginBtn">
-                    <i class="fas fa-sign-in-alt"></i> Log in
+                    <i class="fas fa-sign-in-alt"></i> Login
                 </button>
                 <button class="btn btn-primary btn-small" id="registerBtn">
                     <i class="fas fa-user-plus"></i> Sign Up
@@ -54,159 +967,189 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="main-content active">
-        <div class="container">
-            <div class="hero">
-                <div class="hero-tag">
-                    <i class="fas fa-bolt"></i>
-                    <span>SECURE SOCIAL PLATFORM</span>
-                </div>
-                <h1>Connect. Share. <span>Thrive.</span></h1>
-                <p>FanDrot provides a secure, encrypted environment for communities to connect, share files, and communicate with complete privacy. Your data stays protected with military-grade encryption while you enjoy seamless social interactions.</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary" id="heroRegisterBtn">
-                        <i class="fas fa-rocket"></i> Get Started Free
-                    </button>
-                    <button class="btn btn-outline" id="learnMoreBtn">
-                        <i class="fas fa-play-circle"></i> Watch Demo
-                    </button>
-                </div>
+    <!-- 🚀 LOADING SCREEN -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- 🌟 HERO SECTION -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="hero-tag">
+                <i class="fas fa-bolt"></i>
+                <span>NEXT-GEN SOCIAL PLATFORM</span>
+            </div>
+            
+            <h1 class="hero-title">
+                CONNECT. SHARE. 
+                <span>THRIVE.</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                FanDrot provides a secure, encrypted environment for communities to connect, 
+                share files, and communicate with complete privacy. Your data stays protected 
+                with military-grade encryption while you enjoy seamless social interactions.
+            </p>
+            
+            <div class="hero-buttons">
+                <button class="btn btn-primary btn-large" id="heroRegisterBtn">
+                    <i class="fas fa-rocket"></i> Get Started Free
+                </button>
+                <button class="btn btn-cyber btn-large" id="learnMoreBtn">
+                    <i class="fas fa-play-circle"></i> Watch Demo
+                </button>
+                <button class="btn btn-outline btn-large" id="exploreBtn">
+                    <i class="fas fa-compass"></i> Explore Features
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Profile Section -->
-    <section id="profile" class="main-content">
+    <!-- 🏆 PROFILE SECTION -->
+    <section id="profile" class="profile-section">
         <div class="container">
-            <div class="profile-section">
-                <h1 class="section-title">
-                    <i class="fas fa-user-circle"></i> Your Profile
-                </h1>
+            <h1 class="section-title">
+                <i class="fas fa-user-circle"></i>
+                <span>YOUR PROFILE</span>
+            </h1>
+            
+            <div class="profile-header">
+                <div class="profile-banner"></div>
                 
-                <!-- Profile Header -->
-                <div class="profile-header">
-                    <div class="profile-banner" id="profileBanner"></div>
-                    <div class="profile-info-container">
-                        <div class="avatar-container">
-                            <img src="https://ui-avatars.com/api/?name=FanDrot+User&background=0099ff&color=ffffff&size=150&bold=true&font-size=0.5" alt="Avatar" class="avatar" id="avatarImg">
-                            <div class="avatar-upload tooltip" id="avatarUploadBtn" title="Change Avatar">
-                                <i class="fas fa-camera"></i>
-                            </div>
-                            <input type="file" id="avatarInput" class="hidden" accept="image/*">
+                <div class="profile-info">
+                    <div class="avatar-container">
+                        <div class="avatar-frame">
+                            <img src="https://ui-avatars.com/api/?name=System+Admin&background=9d00ff&color=ffffff&size=200&bold=true&font-size=0.8" 
+                                 alt="Avatar" class="avatar">
                         </div>
-                        <div class="profile-main-info">
-                            <h2 id="displayName">FanDrot User
-                                <span class="status-indicator"></span>
-                            </h2>
-                            <div id="roleBadge" class="role-badge role-user">
-                                <i class="fas fa-user"></i> User
-                            </div>
-                            <div class="username" id="usernameDisplay">@fandrot_user</div>
-                            
-                            <div class="profile-stats">
-                                <div class="stat-item">
-                                    <div class="stat-number" id="postsCount">0</div>
-                                    <div class="stat-label">Posts</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-number" id="friendsCount">0</div>
-                                    <div class="stat-label">Friends</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-number" id="joinedDays">1</div>
-                                    <div class="stat-label">Days</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-number" id="messagesCount">0</div>
-                                    <div class="stat-label">Messages</div>
-                                </div>
-                            </div>
-                            
-                            <div class="profile-actions">
-                                <button class="btn btn-primary" id="editProfileBtn">
-                                    <i class="fas fa-edit"></i> Edit Profile
-                                </button>
-                                <button class="btn btn-outline" id="changePasswordBtn">
-                                    <i class="fas fa-lock"></i> Password
-                                </button>
-                                <button class="btn btn-warning" id="changeStatusBtn">
-                                    <i class="fas fa-circle"></i> Online
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Profile Content -->
-                <div class="profile-content">
-                    <div class="profile-left">
-                        <!-- Bio Section -->
-                        <div class="profile-form">
-                            <h3><i class="fas fa-id-card"></i> About Me</h3>
-                            <div class="form-group">
-                                <label for="userBio">Bio</label>
-                                <textarea id="userBio" class="form-control" rows="4" placeholder="Tell us about yourself..."></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="userInterests">Interests</label>
-                                <input type="text" id="userInterests" class="form-control" placeholder="Add your interests (separated by commas)">
-                            </div>
-                        </div>
-                        
-                        <!-- Recent Activity -->
-                        <div class="profile-form">
-                            <h3><i class="fas fa-history"></i> Recent Activity</h3>
-                            <div id="recentActivity">
-                                <div style="text-align: center; padding: 40px 20px; color: var(--gray);">
-                                    <i class="fas fa-clock" style="font-size: 48px; margin-bottom: 15px;"></i>
-                                    <p>No recent activity</p>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="avatar-status"></div>
                     </div>
                     
-                    <div class="profile-right">
-                        <!-- Banner Upload -->
-                        <div class="profile-form">
-                            <h3><i class="fas fa-image"></i> Profile Banner</h3>
-                            <div class="banner-upload">
-                                <label>Custom Banner</label>
-                                <div class="banner-preview" id="bannerPreview">
-                                    <div class="upload-text">
-                                        <i class="fas fa-image" style="font-size: 24px; margin-bottom: 10px;"></i>
-                                        <p>Click to upload banner</p>
-                                    </div>
-                                </div>
-                                <input type="file" id="bannerInput" class="hidden" accept="image/*">
-                                <small class="form-hint">Recommended: 1200x300 pixels</small>
+                    <div class="profile-details">
+                        <h2 class="profile-name">System Administrator</h2>
+                        
+                        <div class="profile-badge">
+                            <i class="fas fa-crown"></i>
+                            <span>ADMINISTRATOR</span>
+                        </div>
+                        
+                        <div class="username">@admin</div>
+                        
+                        <div class="profile-stats">
+                            <div class="stat-card">
+                                <div class="stat-number" id="postsCount">42</div>
+                                <div class="stat-label">Posts</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="friendsCount">156</div>
+                                <div class="stat-label">Friends</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="joinedDays">365</div>
+                                <div class="stat-label">Days Active</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="messagesCount">2.1K</div>
+                                <div class="stat-label">Messages</div>
                             </div>
                         </div>
                         
-                        <!-- Profile Settings -->
-                        <div class="profile-form">
-                            <h3><i class="fas fa-cog"></i> Settings</h3>
-                            <div class="form-group">
-                                <label for="nickname">Display Name</label>
-                                <input type="text" id="nickname" class="form-control" placeholder="Enter your display name" value="FanDrot User">
-                            </div>
-                            <div class="form-group">
-                                <label>Username (Permanent)</label>
-                                <input type="text" class="form-control" id="permanentUsername" value="@fandrot_user" disabled>
-                            </div>
-                            <button class="btn btn-primary" id="saveProfileBtn" style="width: 100%;">
-                                <i class="fas fa-save"></i> Save Changes
+                        <div class="profile-actions">
+                            <button class="btn btn-primary" id="editProfileBtn">
+                                <i class="fas fa-edit"></i> Edit Profile
+                            </button>
+                            <button class="btn btn-outline" id="changePasswordBtn">
+                                <i class="fas fa-lock"></i> Security
+                            </button>
+                            <button class="btn btn-cyber" id="settingsBtn">
+                                <i class="fas fa-cog"></i> Settings
                             </button>
                         </div>
-                        
-                        <!-- Account Info -->
-                        <div class="profile-form">
-                            <h3><i class="fas fa-info-circle"></i> Account Info</h3>
-                            <div style="color: var(--gray);">
-                                <p><i class="fas fa-calendar-alt"></i> Joined: <span id="joinDate">January 2024</span></p>
-                                <p><i class="fas fa-shield-alt"></i> Security: Verified</p>
-                                <p><i class="fas fa-globe"></i> Status: <span id="userStatus">Online</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PROFILE CONTENT GRID -->
+            <div class="profile-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+                <div class="profile-card" style="background: rgba(0,0,16,0.7); border-radius: 20px; padding: 30px; border: 1px solid rgba(0,243,255,0.2);">
+                    <h3 style="color: var(--neon-blue); margin-bottom: 20px;"><i class="fas fa-id-card"></i> About Me</h3>
+                    <p style="color: rgba(230,247,255,0.8); line-height: 1.6;">
+                        Head administrator of FanDrot. Ensuring the community stays safe and friendly. 
+                        Passionate about cybersecurity and building inclusive digital spaces.
+                    </p>
+                </div>
+                
+                <div class="profile-card" style="background: rgba(0,0,16,0.7); border-radius: 20px; padding: 30px; border: 1px solid rgba(0,243,255,0.2);">
+                    <h3 style="color: var(--neon-purple); margin-bottom: 20px;"><i class="fas fa-star"></i> Achievements</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <span style="background: rgba(0,243,255,0.1); color: var(--neon-blue); padding: 8px 16px; border-radius: 20px; font-size: 14px;">
+                            <i class="fas fa-shield-alt"></i> Security Expert
+                        </span>
+                        <span style="background: rgba(157,0,255,0.1); color: var(--neon-purple); padding: 8px 16px; border-radius: 20px; font-size: 14px;">
+                            <i class="fas fa-users"></i> Community Leader
+                        </span>
+                        <span style="background: rgba(255,0,255,0.1); color: var(--neon-pink); padding: 8px 16px; border-radius: 20px; font-size: 14px;">
+                            <i class="fas fa-code"></i> Developer
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🎯 FORUM SECTION -->
+    <section id="forum" class="forum-section">
+        <div class="container">
+            <h1 class="section-title">
+                <i class="fas fa-comments"></i>
+                <span>COMMUNITY FORUM</span>
+            </h1>
+            
+            <div class="forum-container">
+                <div class="forum-sidebar">
+                    <h3 style="color: var(--neon-blue); margin-bottom: 30px;">
+                        <i class="fas fa-gavel"></i> Rules
+                    </h3>
+                    <div style="color: rgba(230,247,255,0.8);">
+                        <p style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-check-circle" style="color: var(--neon-green);"></i>
+                            Be respectful to all members
+                        </p>
+                        <p style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-check-circle" style="color: var(--neon-green);"></i>
+                            No hate speech or harassment
+                        </p>
+                        <p style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-check-circle" style="color: var(--neon-green);"></i>
+                            Keep conversations on-topic
+                        </p>
+                        <p style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-check-circle" style="color: var(--neon-green);"></i>
+                            No spam or self-promotion
+                        </p>
+                        <p style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-check-circle" style="color: var(--neon-green);"></i>
+                            Respect everyone's privacy
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="forum-chat">
+                    <div class="messages-container">
+                        <!-- Messages will be loaded here -->
+                        <div class="message">
+                            <div class="message-header">
+                                <img src="https://ui-avatars.com/api/?name=Admin&background=9d00ff&color=ffffff&size=50&bold=true" 
+                                     alt="Avatar" class="message-avatar">
+                                <div>
+                                    <h4 style="color: var(--neon-blue);">System Administrator</h4>
+                                    <small style="color: rgba(230,247,255,0.6);">Just now</small>
+                                </div>
                             </div>
+                            <p style="color: rgba(230,247,255,0.9); line-height: 1.6;">
+                                Welcome to the FanDrot community forum! This is a secure, encrypted space 
+                                for meaningful discussions. Remember to follow community guidelines. 🚀
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -214,345 +1157,456 @@
         </div>
     </section>
 
-    <!-- Friends Section -->
-    <section id="friends" class="main-content">
-        <div class="container">
-            <div class="friends-section">
-                <div class="section-header">
-                    <h1>Your <span>Friends</span></h1>
-                    <div class="search-users">
-                        <input type="text" class="search-input" id="searchUsersInput" placeholder="Search users...">
-                        <i class="fas fa-search search-icon"></i>
-                        <div class="search-results" id="searchResults"></div>
-                    </div>
-                </div>
-                
-                <div class="friends-grid" id="friendsGrid">
-                    <!-- Friends will be loaded here -->
-                    <div style="text-align: center; color: var(--gray); padding: 60px 20px; grid-column: 1 / -1;">
-                        <i class="fas fa-user-friends" style="font-size: 72px; margin-bottom: 20px; color: var(--primary); opacity: 0.5;"></i>
-                        <h3 style="color: var(--primary); margin-bottom: 15px;">No friends yet</h3>
-                        <p>Search for users above and add them as friends to start chatting!</p>
-                    </div>
-                </div>
-                
-                <!-- Chat Tabs -->
-                <div class="chat-tabs-container">
-                    <h3 style="margin-bottom: 20px; color: var(--text-light);"><i class="fas fa-comments"></i> Active Chats</h3>
-                    <div class="chat-tabs" id="chatTabs">
-                        <!-- Chat tabs will be added here dynamically -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <script>
+        // 🎮 ULTIMATE JAVASCRIPT - CYBER EFFECTS & INTERACTIONS
+        
+        // Wait for page to load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Hide loading screen
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 1500);
+            
+            // Create cosmic background
+            createStars();
+            createParticles();
+            
+            // Initialize all effects
+            initParallax();
+            initAnimations();
+            initEventListeners();
+            
+            // Update active users count
+            updateActiveUsers();
+            
+            // Start animations
+            startAnimations();
+        });
 
-    <!-- Forum Section -->
-    <section id="forum" class="main-content">
-        <div class="container">
-            <div class="forum-section">
-                <div class="section-header">
-                    <h1>Community <span>Forum</span></h1>
-                    <div>
-                        <button class="btn btn-accent" id="newTopicBtn">
-                            <i class="fas fa-plus-circle"></i> New Topic
-                        </button>
-                    </div>
-                </div>
+        // 🌌 CREATE STARS
+        function createStars() {
+            const starsContainer = document.querySelector('.stars');
+            const starCount = 200;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.width = `${Math.random() * 3 + 1}px`;
+                star.style.height = star.style.width;
+                star.style.opacity = Math.random() * 0.8 + 0.2;
+                star.style.animationDuration = `${Math.random() * 5 + 3}s`;
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // ✨ CREATE PARTICLES
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            const particleCount = 100;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.background = Math.random() > 0.5 ? 'var(--neon-blue)' : 'var(--neon-purple)';
+                particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // 🎯 INITIALIZE PARALLAX
+        function initParallax() {
+            document.addEventListener('mousemove', (e) => {
+                const x = (e.clientX / window.innerWidth - 0.5) * 20;
+                const y = (e.clientY / window.innerHeight - 0.5) * 20;
                 
-                <div class="tabs" id="forumTabs">
-                    <button class="tab active" data-tab="general">
-                        <i class="fas fa-comments"></i> General
-                    </button>
-                    <button class="tab" data-tab="tech">
-                        <i class="fas fa-code"></i> Tech Talk
-                    </button>
-                    <button class="tab" data-tab="support">
-                        <i class="fas fa-life-ring"></i> Support
-                    </button>
-                    <button class="tab" data-tab="offtopic">
-                        <i class="fas fa-gamepad"></i> Off-Topic
-                    </button>
-                    <button class="tab" data-tab="media">
-                        <i class="fas fa-photo-video"></i> Media
-                    </button>
-                </div>
+                document.querySelectorAll('.parallax-element').forEach(el => {
+                    el.style.transform = `translate(${x}px, ${y}px)`;
+                });
+            });
+        }
+
+        // 🚀 INITIALIZE ANIMATIONS
+        function initAnimations() {
+            // Add hover effects to all cards
+            document.querySelectorAll('.stat-card, .profile-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px) scale(1.05)';
+                });
                 
-                <div class="forum-container" style="grid-template-columns: 280px 1fr;">
-                    <div class="chat-sidebar">
-                        <h3><i class="fas fa-gavel"></i> Community Rules</h3>
-                        <div class="rules-list">
-                            <p><i class="fas fa-check-circle"></i> Be respectful to all members</p>
-                            <p><i class="fas fa-check-circle"></i> No hate speech or harassment</p>
-                            <p><i class="fas fa-check-circle"></i> Keep conversations on-topic</p>
-                            <p><i class="fas fa-check-circle"></i> No spam or self-promotion</p>
-                            <p><i class="fas fa-check-circle"></i> Respect everyone's privacy</p>
-                        </div>
-                        
-                        <div class="anti-spam-info">
-                            <h4><i class="fas fa-shield-alt"></i> Active Users</h4>
-                            <div id="activeUsers" style="margin-top: 15px;">
-                                <!-- Active users will be loaded here -->
-                            </div>
-                        </div>
-                    </div>
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Add ripple effect to buttons
+            document.querySelectorAll('.btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
                     
-                    <div class="chat-main">
-                        <div class="messages-container" id="messagesContainer">
-                            <!-- Messages will be added here by JavaScript -->
-                        </div>
+                    ripple.style.cssText = `
+                        position: absolute;
+                        border-radius: 50%;
+                        background: rgba(255, 255, 255, 0.3);
+                        transform: scale(0);
+                        animation: ripple 0.6s linear;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                    `;
+                    
+                    this.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+            
+            // Add CSS for ripple animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: scale(4);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // 🎮 INITIALIZE EVENT LISTENERS
+        function initEventListeners() {
+            // Navigation smooth scroll
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        // Update active nav link
+                        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                        this.classList.add('active');
                         
-                        <form class="message-form" id="messageForm">
-                            <div style="position: relative;">
-                                <textarea class="message-input" id="messageInput" placeholder="Share your thoughts... (You can mention users with @username)"></textarea>
-                                <button type="button" class="btn btn-very-small" id="emojiPickerBtn" style="position: absolute; right: 10px; top: 10px;">
-                                    <i class="fas fa-smile"></i>
-                                </button>
-                                <div class="emoji-picker" id="emojiPicker">
-                                    <!-- Emojis will be added by JavaScript -->
-                                </div>
-                            </div>
-                            <div class="spam-warning" id="spamWarning">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <span id="warningText">Please wait before sending another message</span>
-                            </div>
-                            <div class="form-actions">
-                                <div class="file-upload">
-                                    <button type="button" class="file-label sticker-picker-btn" id="stickerPickerBtn">
-                                        <i class="fas fa-sticker-mule"></i> Stickers
-                                    </button>
-                                    <div class="stickers-container" id="stickersContainer">
-                                        <!-- Stickers will be added here by JavaScript -->
-                                    </div>
-                                    <label class="file-label" for="fileInput">
-                                        <i class="fas fa-paperclip"></i> File
-                                    </label>
-                                    <input type="file" id="fileInput" class="file-input" multiple>
-                                    <label class="file-label" for="imageInput">
-                                        <i class="fas fa-image"></i> Image
-                                    </label>
-                                    <input type="file" id="imageInput" class="file-input" accept="image/*">
-                                </div>
-                                <button type="submit" class="btn btn-primary" id="sendBtn">
-                                    <i class="fas fa-paper-plane"></i> Send Message
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Admin Panel Section -->
-    <section id="adminPanel" class="main-content">
-        <div class="container admin-panel">
-            <div class="section-title">
-                <i class="fas fa-crown"></i> Administration Panel
-            </div>
+                        // Smooth scroll to section
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
             
-            <div class="admin-stats">
-                <div class="stat-card">
-                    <div class="stat-number" id="totalUsers">0</div>
-                    <div class="stat-label">Total Users</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="totalMessages">0</div>
-                    <div class="stat-label">Total Messages</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="adminCount">0</div>
-                    <div class="stat-label">Administrators</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="bannedCount">0</div>
-                    <div class="stat-label">Banned Users</div>
-                </div>
-            </div>
+            // Hero buttons
+            document.getElementById('heroRegisterBtn').addEventListener('click', () => {
+                showNotification('🚀 Get Ready!', 'Prepare for an amazing experience!', 'success');
+                document.getElementById('registerBtn').click();
+            });
             
-            <div class="admin-section">
-                <h2><i class="fas fa-users-cog"></i> User Management</h2>
-                <div class="users-list" id="usersList">
-                    <!-- Users will be loaded here -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- User Profile Modal -->
-    <div class="modal" id="userProfileModal">
-        <div class="modal-content user-profile-modal">
-            <button class="close-modal" id="closeUserProfileModal">&times;</button>
-            <div class="user-profile-header">
-                <img src="" alt="Banner" class="user-profile-banner" id="modalBanner">
-                <div class="user-profile-info">
-                    <img src="" alt="Avatar" class="user-profile-avatar" id="modalAvatar">
-                    <div class="user-profile-details">
-                        <h2 id="modalName">User Name</h2>
-                        <div id="modalRoleBadge" class="role-badge role-user">
-                            <i class="fas fa-user"></i> User
-                        </div>
-                        <div class="username" id="modalUsername">@username</div>
-                        <div class="online-status" id="modalStatus">
-                            <span class="status-dot offline"></span>
-                            <span>Offline</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="user-profile-body">
-                <div class="user-profile-bio">
-                    <h3><i class="fas fa-id-card"></i> About</h3>
-                    <p id="modalBio">No bio provided</p>
-                    <div id="modalInterests" style="margin-top: 15px;"></div>
-                </div>
+            document.getElementById('learnMoreBtn').addEventListener('click', () => {
+                showNotification('🎬 Demo Starting', 'Check out our amazing features!', 'info');
+                // Add your demo video logic here
+            });
+            
+            document.getElementById('exploreBtn').addEventListener('click', () => {
+                document.querySelector('#forum').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Profile buttons
+            document.getElementById('editProfileBtn').addEventListener('click', () => {
+                showNotification('✏️ Edit Profile', 'Customize your profile settings', 'info');
+            });
+            
+            document.getElementById('changePasswordBtn').addEventListener('click', () => {
+                showNotification('🔒 Security', 'Manage your security settings', 'warning');
+            });
+            
+            document.getElementById('settingsBtn').addEventListener('click', () => {
+                showNotification('⚙️ Settings', 'Adjust your preferences', 'info');
+            });
+            
+            // Login/Register buttons
+            document.getElementById('loginBtn').addEventListener('click', () => {
+                showNotification('🔐 Login', 'Welcome back! Please sign in.', 'info');
+                // Add your login modal logic here
+            });
+            
+            document.getElementById('registerBtn').addEventListener('click', () => {
+                showNotification('🌟 Registration', 'Join our amazing community!', 'success');
+                // Add your registration modal logic here
+            });
+            
+            // Add scroll effects
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.5;
                 
-                <div class="user-profile-stats">
-                    <div class="user-profile-stat">
-                        <div class="user-profile-stat-number" id="modalPosts">0</div>
-                        <div class="user-profile-stat-label">Posts</div>
-                    </div>
-                    <div class="user-profile-stat">
-                        <div class="user-profile-stat-number" id="modalFriends">0</div>
-                        <div class="user-profile-stat-label">Friends</div>
-                    </div>
-                    <div class="user-profile-stat">
-                        <div class="user-profile-stat-number" id="modalJoined">1</div>
-                        <div class="user-profile-stat-label">Days</div>
-                    </div>
-                </div>
+                // Parallax effect for elements
+                document.querySelectorAll('.parallax-element').forEach(el => {
+                    el.style.transform = `translateY(${rate}px)`;
+                });
                 
-                <div class="profile-actions" id="modalActions">
-                    <!-- Actions will be added here -->
-                </div>
-            </div>
-        </div>
-    </div>
+                // Update header opacity
+                const header = document.querySelector('header');
+                if (scrolled > 100) {
+                    header.style.background = 'rgba(0, 0, 16, 0.95)';
+                } else {
+                    header.style.background = 'rgba(0, 0, 16, 0.85)';
+                }
+            });
+        }
 
-    <!-- Private Chat Window -->
-    <div class="private-chat-container" id="privateChatContainer">
-        <div class="private-chat-header">
-            <div>
-                <strong id="privateChatTitle">Private Chat</strong>
-                <div class="online-status" id="privateChatStatus">
-                    <span class="status-dot offline"></span>
-                    <span>Offline</span>
-                </div>
-            </div>
-            <button class="chat-minimize" id="minimizeChat">
-                <i class="fas fa-minus"></i>
-            </button>
-        </div>
-        <div class="private-chat-messages" id="privateChatMessages">
-            <!-- Private messages will appear here -->
-        </div>
-        <div class="private-chat-input">
-            <div class="form-actions">
-                <button type="button" class="file-label sticker-picker-btn" id="privateStickerPickerBtn">
-                    <i class="fas fa-smile"></i>
-                </button>
-                <div class="stickers-container" id="privateStickersContainer">
-                    <!-- Stickers will be added here by JavaScript -->
-                </div>
-                <input type="text" id="privateMessageInput" class="form-control" placeholder="Type a private message...">
-                <button class="btn btn-primary" id="sendPrivateMessageBtn">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-        </div>
-    </div>
+        // 📊 UPDATE ACTIVE USERS
+        function updateActiveUsers() {
+            const activeCount = Math.floor(Math.random() * 100) + 50;
+            document.querySelectorAll('.active-users').forEach(el => {
+                el.textContent = `${activeCount} online now`;
+            });
+        }
 
-    <!-- Modals -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeLoginModal">&times;</button>
-            <div class="modal-header">
-                <h2><i class="fas fa-sign-in-alt"></i> Welcome Back</h2>
-                <p>Sign in to your FanDrot account</p>
-            </div>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="loginUsername">Username</label>
-                    <input type="text" id="loginUsername" class="form-control" placeholder="Enter your username" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    <i class="fas fa-lock"></i> Sign In
-                </button>
-            </form>
-            <div class="form-footer">
-                <p>Don't have an account? <a href="#" id="switchToRegister">Create one now</a></p>
-                <p style="margin-top: 10px; font-size: 12px; color: var(--gray);">
-                    Demo Admin: admin / password123<br>
-                    Demo Moderator: moderator / password123
-                </p>
-            </div>
-        </div>
-    </div>
+        // 🎪 START ANIMATIONS
+        function startAnimations() {
+            // Animate stats counter
+            animateCounter('postsCount', 0, 42, 2000);
+            animateCounter('friendsCount', 0, 156, 2000);
+            animateCounter('joinedDays', 0, 365, 2000);
+            animateCounter('messagesCount', 0, 2100, 2000);
+            
+            // Update active users every 10 seconds
+            setInterval(updateActiveUsers, 10000);
+            
+            // Add typing effect to messages
+            simulateTyping();
+        }
 
-    <div class="modal" id="registerModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeRegisterModal">&times;</button>
-            <div class="modal-header">
-                <h2><i class="fas fa-user-plus"></i> Join FanDrot</h2>
-                <p>Create your secure account</p>
-            </div>
-            <form id="registerForm">
-                <div class="form-group">
-                    <label for="registerUsername">Username (Permanent)</label>
-                    <input type="text" id="registerUsername" class="form-control" placeholder="Choose a username" required>
-                    <small class="form-hint">3-20 characters, letters, numbers, underscores only</small>
-                </div>
-                <div class="form-group">
-                    <label for="registerPassword">Password</label>
-                    <input type="password" id="registerPassword" class="form-control" placeholder="Create a password" required>
-                    <small class="form-hint">Minimum 6 characters</small>
-                </div>
-                <div class="form-group">
-                    <label for="registerConfirmPassword">Confirm Password</label>
-                    <input type="password" id="registerConfirmPassword" class="form-control" placeholder="Confirm your password" required>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    <i class="fas fa-user-check"></i> Create Account
-                </button>
-            </form>
-            <div class="form-footer">
-                <p>Already have an account? <a href="#" id="switchToLogin">Sign in here</a></p>
-            </div>
-        </div>
-    </div>
+        // 🔢 ANIMATE COUNTER
+        function animateCounter(elementId, start, end, duration) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value.toLocaleString();
+                
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
 
-    <div class="modal" id="changePasswordModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeChangePasswordModal">&times;</button>
-            <div class="modal-header">
-                <h2><i class="fas fa-lock"></i> Change Password</h2>
-                <p>Update your account password</p>
-            </div>
-            <form id="changePasswordForm">
-                <div class="form-group">
-                    <label for="currentPassword">Current Password</label>
-                    <input type="password" id="currentPassword" class="form-control" placeholder="Enter current password" required>
-                </div>
-                <div class="form-group">
-                    <label for="newPassword">New Password</label>
-                    <input type="password" id="newPassword" class="form-control" placeholder="Enter new password" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirmNewPassword">Confirm New Password</label>
-                    <input type="password" id="confirmNewPassword" class="form-control" placeholder="Confirm new password" required>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    <i class="fas fa-key"></i> Update Password
-                </button>
-            </form>
-        </div>
-    </div>
+        // ⌨️ SIMULATE TYPING
+        function simulateTyping() {
+            const messages = [
+                "Welcome to FanDrot! 🚀",
+                "Secure connections, real friendships.",
+                "Encrypted chats, endless possibilities.",
+                "Join the revolution! 💫"
+            ];
+            
+            let messageIndex = 0;
+            let charIndex = 0;
+            const typingElement = document.querySelector('.message:last-child p');
+            
+            if (!typingElement) return;
+            
+            function typeWriter() {
+                if (charIndex < messages[messageIndex].length) {
+                    typingElement.textContent += messages[messageIndex].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeWriter, 50);
+                } else {
+                    setTimeout(() => {
+                        typingElement.textContent = '';
+                        charIndex = 0;
+                        messageIndex = (messageIndex + 1) % messages.length;
+                        typeWriter();
+                    }, 2000);
+                }
+            }
+            
+            // Start typing effect
+            setTimeout(typeWriter, 1000);
+        }
 
-    <!-- Подключаем JavaScript файл -->
-    <script src="script.js"></script>
+        // 📢 SHOW NOTIFICATION
+        function showNotification(title, message, type = 'info') {
+            // Remove existing notifications
+            document.querySelectorAll('.notification').forEach(n => n.remove());
+            
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 30px;
+                background: rgba(0, 0, 16, 0.95);
+                backdrop-filter: blur(20px);
+                border: 1px solid ${type === 'success' ? 'var(--neon-green)' : type === 'warning' ? 'var(--cyber-yellow)' : 'var(--neon-blue)'};
+                border-radius: 15px;
+                padding: 20px 25px;
+                max-width: 350px;
+                z-index: 10000;
+                transform: translateX(100%);
+                animation: slideInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+            `;
+            
+            let icon = 'fa-info-circle';
+            let iconColor = 'var(--neon-blue)';
+            
+            if (type === 'success') {
+                icon = 'fa-check-circle';
+                iconColor = 'var(--neon-green)';
+            } else if (type === 'warning') {
+                icon = 'fa-exclamation-triangle';
+                iconColor = 'var(--cyber-yellow)';
+            }
+            
+            notification.innerHTML = `
+                <div style="display: flex; align-items: flex-start; gap: 15px;">
+                    <i class="fas ${icon}" style="font-size: 24px; color: ${iconColor};"></i>
+                    <div>
+                        <h4 style="color: ${type === 'success' ? 'var(--neon-green)' : type === 'warning' ? 'var(--cyber-yellow)' : 'var(--neon-blue)'}; 
+                                  margin-bottom: 5px; font-size: 16px;">
+                            ${title}
+                        </h4>
+                        <p style="color: rgba(230, 247, 255, 0.9); font-size: 14px; line-height: 1.4;">
+                            ${message}
+                        </p>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+                setTimeout(() => notification.remove(), 500);
+            }, 5000);
+            
+            // Add CSS animations
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideInRight {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOutRight {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // 🎮 ADD SOME RANDOM INTERACTIONS
+        setInterval(() => {
+            // Random glow effect on elements
+            const elements = document.querySelectorAll('.stat-card, .profile-card');
+            if (elements.length > 0) {
+                const randomElement = elements[Math.floor(Math.random() * elements.length)];
+                randomElement.style.boxShadow = '0 0 30px var(--neon-blue)';
+                setTimeout(() => {
+                    randomElement.style.boxShadow = '';
+                }, 500);
+            }
+        }, 3000);
+
+        // 🔄 UPDATE TIME
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { 
+                hour12: true, 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            document.querySelectorAll('.current-time').forEach(el => {
+                el.textContent = timeString;
+            });
+        }
+
+        // Update time every second
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Ctrl + H for Home
+            if (e.ctrlKey && e.key === 'h') {
+                e.preventDefault();
+                document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Ctrl + P for Profile
+            if (e.ctrlKey && e.key === 'p') {
+                e.preventDefault();
+                document.querySelector('#profile').scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Ctrl + F for Forum
+            if (e.ctrlKey && e.key === 'f') {
+                e.preventDefault();
+                document.querySelector('#forum').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        // Add touch feedback
+        document.addEventListener('touchstart', () => {}, { passive: true });
+        
+        // Prevent context menu on certain elements
+        document.querySelectorAll('.btn, .nav-link').forEach(el => {
+            el.addEventListener('contextmenu', (e) => e.preventDefault());
+        });
+
+        // Initialize tooltips
+        document.querySelectorAll('[title]').forEach(el => {
+            el.addEventListener('mouseenter', function() {
+                const tooltip = document.createElement('div');
+                tooltip.className = 'tooltip';
+                tooltip.textContent = this.title;
+                tooltip.style.cssText = `
+                    position: absolute;
+                    background: rgba(0, 0, 16, 0.95);
+                    color: var(--neon-blue);
+                    padding: 8px 12px;
+                    border-radius: 6px;
+                    font-size: 12px;
+                    white-space: nowrap;
+                    z-index: 10001;
+                    border: 1px solid var(--neon-blue);
+                    box-shadow: var(--glow-blue);
+                `;
+                
+                const rect = this.getBoundingClientRect();
+                tooltip.style.top = `${rect.top - 40}px`;
+                tooltip.style.left = `${rect.left + rect.width / 2}px`;
+                tooltip.style.transform = 'translateX(-50%)';
+                
+                document.body.appendChild(tooltip);
+                this.tooltip = tooltip;
+            });
+            
+            el.addEventListener('mouseleave', function() {
+                if (this.tooltip) {
+                    this.tooltip.remove();
+                    this.tooltip = null;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
